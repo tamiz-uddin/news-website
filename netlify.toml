@@ -1,0 +1,17 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# For static export (if you want to use static generation instead of custom server)
+# Uncomment the lines below and comment out the custom server
+# [build]
+#   command = "npm run build && npm run export"
+#   publish = "out"
+
+# [[redirects]]
+#   from = "/*"
+#   to = "/index.html"
+#   status = 200
