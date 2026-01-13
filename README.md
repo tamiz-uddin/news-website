@@ -1,36 +1,118 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# News Website API
 
-## Getting Started
+A modern Node.js backend API for a news website built with Express.js.
 
-First, run the development server:
+## Features
 
+- 📰 RESTful API for news articles
+- 📁 Category-based news filtering
+- 🔍 Search and pagination support
+- 📊 Health check endpoint
+- 🛠️ Request logging middleware
+- 📖 Static file serving
+- 🚀 Easy deployment
+
+## Quick Start
+
+### Prerequisites
+
+- Node.js (v16 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/tamiz-uddin/news-website.git
+cd news-website
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+3. Start the development server:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Open your browser and visit:
+```
+http://localhost:3000
+```
 
-## Learn More
+## API Endpoints
 
-To learn more about Next.js, take a look at the following resources:
+### Health Check
+- **GET** `/health` - Check server status and uptime
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### News Articles
+- **GET** `/api/news` - Get all news articles (with optional query parameters)
+  - Query parameters:
+    - `category`: Filter by category (e.g., `?category=technology`)
+    - `limit`: Limit results (default: 10)
+    - `offset`: Pagination offset (default: 0)
+- **GET** `/api/news/:id` - Get specific news article by ID
+- **POST** `/api/news` - Create a new news article
+  - Body: `{ "title": "string", "content": "string", "category": "string", "author": "string", "imageUrl": "string" }`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Categories
+- **GET** `/api/categories` - Get available news categories
 
-## Deploy on Vercel
+## Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+news-website/
+├── src/
+│   ├── index.js          # Main application file
+│   ├── routes/
+│   │   └── news.js       # News API routes
+│   └── middleware/
+│       └── logger.js     # Request logging middleware
+├── public/
+│   └── index.html        # Static HTML documentation
+├── package.json          # Dependencies and scripts
+└── README.md            # This file
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Scripts
+
+- `npm start` - Start the production server
+- `npm run dev` - Start the development server with nodemon
+- `npm test` - Run tests (to be implemented)
+- `npm run lint` - Lint the code
+- `npm run lint:fix` - Fix linting issues
+
+## Development
+
+### Adding New Routes
+
+1. Create a new route file in `src/routes/`
+2. Import and use it in `src/index.js`
+
+### Adding Middleware
+
+1. Create middleware in `src/middleware/`
+2. Import and use it in `src/index.js`
+
+## Deployment
+
+This project includes configurations for various deployment platforms:
+
+- **Vercel**: `vercel.json`
+- **Railway**: `Dockerfile`
+- **Render**: `render.yaml`
+- **Netlify**: `netlify.toml`
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
+
+## License
+
+ISC License - see package.json for details
